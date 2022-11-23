@@ -1,14 +1,9 @@
-package HomeWork1.transport;
+package HomeWork2.Tranports;
 
 import java.time.LocalDate;
 
-public class Car {
-    private String brand;
-    private String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private int year;
-    private String country;
     private String transmission;
     private String bodyType;
     private String registrationNumber;
@@ -16,6 +11,7 @@ public class Car {
     private String tires;
     private Key key;
     private Insurance insurance;
+
     public class Insurance {
         private LocalDate validityPeriod;
         private double cost;
@@ -75,37 +71,16 @@ public class Car {
         }
     }
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String country,
-               String transmission, String bodyType, String registrationNumber, int numberOfSeats, String tires) {
-        if (brand == null || brand.equals("")) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-        if (model == null || model.equals("")) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-        if (country == null || country.equals("")) {
-            this.country = "default";
-        } else {
-            this.country = country;
-        }
+    public Car(String brand, String model, double engineVolume, int yearOfRelease, String country,
+               String transmission, String bodyType, String registrationNumber, int numberOfSeats, String tires,
+               String setBodyColor, int setMaxSpeed) {
+
+        super(brand, model, yearOfRelease, country, setBodyColor, setMaxSpeed);
+
         if (engineVolume <= 0) {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
-        }
-        if (color == null || color.equals("")) {
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
-        if (year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
         }
         if (transmission == null || transmission.equals("")) {
             this.transmission = "default";
@@ -133,7 +108,6 @@ public class Car {
             this.numberOfSeats = numberOfSeats;
         }
     }
-
     public void setKey(Key key) {
         this.key = key;
     }
@@ -150,22 +124,6 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getTransmission() {
         return transmission;
     }
@@ -176,6 +134,10 @@ public class Car {
 
     public String getRegistrationNumber() {
         return registrationNumber;
+    }
+
+    public String getBodyType() {
+        return bodyType;
     }
 
     public void setRegistrationNumber(String registrationNumber) {
@@ -190,22 +152,6 @@ public class Car {
         this.tires = tires;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
     public int getNumberOfSeats() {
         return numberOfSeats;
     }
@@ -218,16 +164,22 @@ public class Car {
         }
     }
 
+    @Override
+    public void refill() {
+        System.out.println("Заправляем бензином,дизелем на заправке или заряжаем на специальных электропарковках");
+    }
+
     public String toString() {
-        return this.brand + " " + this.model
+        return this.getBrand() + " " + this.getModel()
                 + ", обьем двигателя - "
-                + this.engineVolume + " л., цвет - "
-                + this.color + ", год выпуска - "
-                + this.year + ", сборка - "
-                + this.country + ", " + this.transmission + " коробка передач, "
-                + "тип кузова - " + this.bodyType
-                + "количество мест - " + numberOfSeats
-                + ", регистрационный номер - " + registrationNumber
-                + "," + tires + " резина";
+                + this.getEngineVolume() + " л., цвет - "
+                + this.getBodyColor() + ", год выпуска - "
+                + this.getYearOfRelease() + ", сборка - "
+                + this.getCountry() + ", " + this.getTransmission() + " коробка передач, "
+                + "тип кузова - " + this.getBodyType()
+                + ", количество мест - " + getNumberOfSeats()
+                + ", регистрационный номер - " + getRegistrationNumber()
+                + "," + getTires() + " резина";
     }
 }
+
