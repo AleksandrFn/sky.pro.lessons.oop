@@ -1,11 +1,10 @@
 package HomeWork2.Tranports;
 
-public class Car extends Transport implements Competing {
+public class Truck extends Transport implements Competing{
     private final double pitStopTime;
     private final int maxSpeed;
     private final double bestLapTime;
-
-    public Car(String brand, String model, double engineVolume, double pitStopTime, int maxSpeed, double bestLapTime) {
+    public Truck(String brand, String model, double engineVolume, double pitStopTime, int maxSpeed, double bestLapTime) {
         super(brand, model, engineVolume);
         this.pitStopTime = pitStopTime;
         this.maxSpeed = maxSpeed;
@@ -14,19 +13,29 @@ public class Car extends Transport implements Competing {
 
     @Override
     public void startMoving() {
-        System.out.println("Машина поехала!");
+        System.out.println("Трак поехал!");
     }
 
     @Override
     public void finishTheMovement() {
-        System.out.println("Машина остановилась");
+        System.out.println("Трак остановился!");
     }
 
+    @Override
+    public String getBrand() {
+        return getBrand();
+    }
+
+    @Override
+    public String getModel() {
+        return getModel();
+    }
 
     @Override
     public double getEngineVolume() {
         return getEngineVolume();
     }
+
 
     @Override
     public void getPitStopped() {
@@ -43,6 +52,3 @@ public class Car extends Transport implements Competing {
         System.out.println("Максимальная скорость - " + maxSpeed);
     }
 }
-
-
-

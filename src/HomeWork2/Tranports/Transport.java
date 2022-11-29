@@ -2,14 +2,10 @@ package HomeWork2.Tranports;
 
 public abstract class Transport {
 
-    private String brand;
-    private String model;
-    private int yearOfRelease;
-    private String country;
-    private String bodyColor;
-    private int maxSpeed;
-
-    public Transport(String brand, String model, int yearOfRelease, String country, String bodyColor, int maxSpeed) {
+    private final String brand;
+    private final String model;
+    private double engineVolume;
+    public Transport(String brand, String model, double engineVolume) {
         if (brand == null || brand.equals("")) {
             this.brand = "default";
         } else {
@@ -20,72 +16,29 @@ public abstract class Transport {
         } else {
             this.model = model;
         }
-        if (yearOfRelease <= 0) {
-            this.yearOfRelease = 0;
-        } else {
-            this.yearOfRelease = yearOfRelease;
-        }
-        if (country == null || country.equals("")) {
-            this.country = "default";
-        } else {
-            this.country = country;
-        }
-        setBodyColor(bodyColor);
-        setMaxSpeed(maxSpeed);
+        setEngineVolume(engineVolume);
     }
 
-    public String getBrand() {
+    public abstract void startMoving();
+
+    public abstract   void finishTheMovement() ;
+    public  String getBrand() {
         return brand;
     }
 
     public String getModel() {
-        return model;
+       return model;
     }
 
-    public int getYearOfRelease() {
-        return yearOfRelease;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-
-    public String getCountry() {
-        return country;
-    }
-
-
-    public String getBodyColor() {
-        return bodyColor;
-    }
-
-    public void setBodyColor(String bodyColor) {
-        if (bodyColor == null || bodyColor.equals("")) {
-            this.bodyColor = "default";
+    public void setEngineVolume(double engineVolume) {
+        if (engineVolume <= 0) {
+            this.engineVolume = 1.5;
         } else {
-            this.bodyColor = bodyColor;
+            this.engineVolume = engineVolume;
         }
-    }
-
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(int maxSpeed) {
-        if (maxSpeed <= 0) {
-            this.maxSpeed = 0;
-        } else {
-            this.maxSpeed = maxSpeed;
-        }
-    }
-
-    public abstract void refill();
-    @Override
-    public String toString() {
-        return "Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", yearOfRelease=" + yearOfRelease +
-                ", country='" + country + '\'' +
-                ", bodyColor='" + bodyColor + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                '}';
     }
 }
