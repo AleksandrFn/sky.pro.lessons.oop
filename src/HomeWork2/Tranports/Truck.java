@@ -2,12 +2,11 @@ package HomeWork2.Tranports;
 
 import java.util.Objects;
 
-public class Car extends Transport implements Competing {
+public class Truck extends Transport implements Competing{
     private final double pitStopTime;
     private final int maxSpeed;
     private final double bestLapTime;
-
-    public Car(String brand, String model, double engineVolume, double pitStopTime, int maxSpeed, double bestLapTime) {
+    public Truck(String brand, String model, double engineVolume, double pitStopTime, int maxSpeed, double bestLapTime) {
         super(brand, model, engineVolume);
         this.pitStopTime = pitStopTime;
         this.maxSpeed = maxSpeed;
@@ -16,17 +15,32 @@ public class Car extends Transport implements Competing {
 
     @Override
     public void startMoving() {
-        System.out.println("Машина поехала!");
+        System.out.println("Трак поехал!");
     }
 
     @Override
     public void finishTheMovement() {
-        System.out.println("Машина остановилась");
+        System.out.println("Трак остановился!");
+    }
+
+    @Override
+    public String getBrand() {
+        return getBrand();
+    }
+
+    @Override
+    public String getModel() {
+        return getModel();
+    }
+
+    @Override
+    public double getEngineVolume() {
+        return getEngineVolume();
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Car{" +
+        return super.toString() + "Truck{" +
                 "pitStopTime=" + pitStopTime +
                 ", maxSpeed=" + maxSpeed +
                 ", bestLapTime=" + bestLapTime +
@@ -37,18 +51,14 @@ public class Car extends Transport implements Competing {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Double.compare(car.pitStopTime, pitStopTime) == 0 && maxSpeed == car.maxSpeed && Double.compare(car.bestLapTime, bestLapTime) == 0;
+        if (!super.equals(o)) return false;
+        Truck truck = (Truck) o;
+        return Double.compare(truck.pitStopTime, pitStopTime) == 0 && maxSpeed == truck.maxSpeed && Double.compare(truck.bestLapTime, bestLapTime) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pitStopTime, maxSpeed, bestLapTime);
-    }
-
-    @Override
-    public double getEngineVolume() {
-        return getEngineVolume();
+        return Objects.hash(super.hashCode(), pitStopTime, maxSpeed, bestLapTime);
     }
 
     @Override
@@ -66,6 +76,3 @@ public class Car extends Transport implements Competing {
         System.out.println("Максимальная скорость - " + maxSpeed);
     }
 }
-
-
-
