@@ -1,9 +1,12 @@
 package HomeWork2.Tranports;
 
-public class Bus extends Transport implements Competing{
+import java.util.Objects;
+
+public class Bus extends Transport implements Competing {
     private final double pitStopTime;
     private final int maxSpeed;
     private final double bestLapTime;
+
     public Bus(String brand, String model, double engineVolume, double pitStopTime, int maxSpeed, double bestLapTime) {
         super(brand, model, engineVolume);
         this.pitStopTime = pitStopTime;
@@ -43,6 +46,29 @@ public class Bus extends Transport implements Competing{
     @Override
     public void getBestLapTime() {
         System.out.println("Лучшее время круга - " + bestLapTime);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Bus{" +
+                "pitStopTime=" + pitStopTime +
+                ", maxSpeed=" + maxSpeed +
+                ", bestLapTime=" + bestLapTime +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Bus bus = (Bus) o;
+        return Double.compare(bus.pitStopTime, pitStopTime) == 0 && maxSpeed == bus.maxSpeed && Double.compare(bus.bestLapTime, bestLapTime) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), pitStopTime, maxSpeed, bestLapTime);
     }
 
     @Override

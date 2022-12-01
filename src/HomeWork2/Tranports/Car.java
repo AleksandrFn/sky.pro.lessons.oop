@@ -1,5 +1,7 @@
 package HomeWork2.Tranports;
 
+import java.util.Objects;
+
 public class Car extends Transport implements Competing {
     private final double pitStopTime;
     private final int maxSpeed;
@@ -22,6 +24,27 @@ public class Car extends Transport implements Competing {
         System.out.println("Машина остановилась");
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "Car{" +
+                "pitStopTime=" + pitStopTime +
+                ", maxSpeed=" + maxSpeed +
+                ", bestLapTime=" + bestLapTime +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Double.compare(car.pitStopTime, pitStopTime) == 0 && maxSpeed == car.maxSpeed && Double.compare(car.bestLapTime, bestLapTime) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pitStopTime, maxSpeed, bestLapTime);
+    }
 
     @Override
     public double getEngineVolume() {

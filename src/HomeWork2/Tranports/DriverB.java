@@ -15,6 +15,11 @@ public class DriverB <T extends Car> extends Driver{
     }
 
     @Override
+    public String toString() {
+        return super.toString() + "DriverB{}";
+    }
+
+    @Override
     String refill() {
         return "Легковой автомобиль заправляется";
     }
