@@ -7,6 +7,7 @@ public abstract class Transport {
     private final String brand;
     private final String model;
     private double engineVolume;
+
     public Transport(String brand, String model, double engineVolume) {
         if (brand == null || brand.equals("")) {
             this.brand = "default";
@@ -21,37 +22,12 @@ public abstract class Transport {
         setEngineVolume(engineVolume);
     }
 
-    public abstract void startMoving();
-
-    public abstract   void finishTheMovement() ;
     public  String getBrand() {
         return brand;
     }
 
     public String getModel() {
-       return model;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Transport transport = (Transport) o;
-        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(brand, model, engineVolume);
-    }
-
-    @Override
-    public String toString() {
-        return "Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineVolume=" + engineVolume +
-                '}';
+        return model;
     }
 
     public double getEngineVolume() {
@@ -64,5 +40,31 @@ public abstract class Transport {
         } else {
             this.engineVolume = engineVolume;
         }
+    }
+    public abstract void startMoving();
+
+    public abstract   void finishTheMovement() ;
+
+    public abstract void printType();
+
+    @Override
+    public String toString() {
+        return "Transport{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", engineVolume=" + engineVolume +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport transport = (Transport) o;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume);
     }
 }

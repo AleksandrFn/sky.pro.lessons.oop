@@ -25,6 +25,11 @@ public abstract class Driver {
         return EXPERIENCE;
     }
 
+    abstract String start();
+    abstract String finish();
+
+    abstract String refill();
+
     @Override
     public String toString() {
         return "Driver{" +
@@ -46,9 +51,4 @@ public abstract class Driver {
     public int hashCode() {
         return Objects.hash(FIO, DRIVER_LICENSE, EXPERIENCE);
     }
-
-    abstract String start();
-    abstract String finish();
-
-    abstract String refill();
 }
